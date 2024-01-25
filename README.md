@@ -11,10 +11,7 @@ Currently, two official plugins are available:
 
 ```python
    python app.py
-
-
-```markdown
+```
 ```npm
-npm run dev
-
-   
+   npm run dev
+```
