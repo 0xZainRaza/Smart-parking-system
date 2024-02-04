@@ -1,10 +1,32 @@
+/* eslint-disable react/prop-types */
+// import { useState } from 'react';
+// import Button from 'react-bootstrap/Button';
+// import Form from 'react-bootstrap/Form';
+
+
+// function Example() {
+  
+
+//   return (
+//     <>
+//       <Button variant="primary" onClick={handleShow}>
+//         Launch demo modal
+//       </Button>
+        
+//     </>
+//   );
+// }
+
+// export default Example;
+
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Modal from 'react-bootstrap/Modal';
 
-function ParkForm() {
+function ParkForm({show, handleClose}) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastNamfe: '',
@@ -31,6 +53,7 @@ function ParkForm() {
 
       if (response.ok) {
         console.log('Form submitted successfully');
+        handleClose()
         // Add any additional logic after successful form submission
       } else {
         console.error('Failed to submit form');
@@ -50,6 +73,11 @@ function ParkForm() {
 
   return (
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Parking Form</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
       <Form onSubmit={handleSubmit}>
         <h1>Parking Application Form</h1>
         <Row className="mb-3">
@@ -135,10 +163,17 @@ function ParkForm() {
             value={formData.model}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" style={{ display: 'block', margin: '0 auto' }}>
-          Send
-        </Button>
       </Form>
+      </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            Send
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

@@ -1,20 +1,29 @@
 /* eslint-disable react/prop-types */
+import { useState } from 'react';
 import { Card } from 'react-bootstrap';
+import ParkForm from './ParkForm';
 
 function ParkingSlot({ slot }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   const isAvailable = slot.available;
   const statusColor = isAvailable ? 'success' : 'danger';
 
-
   const handleClick = () => {
-    if (isAvailable) {
-      console.log(true);
+    if (isAvailable && !show) {
+      handleShow();
     }
   }
 
   return (
-    <Card bg={statusColor} text={isAvailable ? 'dark' : 'white'}>
-      <Card.Body onClick={handleClick}>{slot.name}</Card.Body>
+    <Card id="card" bg={statusColor} text={isAvailable ? 'dark' : 'white'}>
+      <Card.Body onClick={handleClick}>
+          <ParkForm show={show} handleClose={handleClose}></ParkForm>
+      </Card.Body>
     </Card>
   );
 }

@@ -3,10 +3,10 @@ import ParkingGrid from "./components/ParkingGrid";
 
 function App() {
   return (
-    <>
-      <Header />
+    <div id="app">
+      <Header id="header"/>
       <ParkingGrid />
-    </>
+    </div>
   )
 }
 
