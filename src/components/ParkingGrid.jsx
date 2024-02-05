@@ -5,7 +5,7 @@ function ParkingGrid() {
   const slots = Array(16).fill({available: true});
 
   return (
-    <Container>
+    <Container id="ParkGrid">
       <Row>
         {slots.map((slot, index) => (
           <Col key={index} xs={3}>

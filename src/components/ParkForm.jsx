@@ -1,24 +1,4 @@
 /* eslint-disable react/prop-types */
-// import { useState } from 'react';
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
-
-
-// function Example() {
-  
-
-//   return (
-//     <>
-//       <Button variant="primary" onClick={handleShow}>
-//         Launch demo modal
-//       </Button>
-        
-//     </>
-//   );
-// }
-
-// export default Example;
-
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';

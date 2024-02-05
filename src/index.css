@@ -1,9 +1,26 @@
+#root {
+  height: 100vh;
+}
+
+#ParkGrid {
+  padding-top: 5vh;
+}
+
 #app {
   width: 100vw;
 }
 
 #card {
-  height: 15vh;
+  height: 17vh;
+}
+
+.card-img-bottom {
+  height: 100%;
+  margin: auto
+}
+
+.navbar-nav {
+  padding-top: 1.5vh;
 }
 
 div {
