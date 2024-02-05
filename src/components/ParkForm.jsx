@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 
-function ParkForm({show, handleClose}) {
+function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastNamfe: '',
@@ -34,6 +34,14 @@ function ParkForm({show, handleClose}) {
       if (response.ok) {
         console.log('Form submitted successfully');
         handleClose()
+        setSlots((slots) =>
+        slots.map((element, i) => {
+          if (i == index) {
+            return {available: false};
+          }
+        return element;
+      })
+      );
         // Add any additional logic after successful form submission
       } else {
         console.error('Failed to submit form');

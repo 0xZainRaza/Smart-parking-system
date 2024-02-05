@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import ParkForm from './ParkForm';
 
-function ParkingSlot({ slot }) {
+function ParkingSlot({ index, slot, slots, setSlots }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,7 +24,7 @@ function ParkingSlot({ slot }) {
   return (
     <Card id="card" bg={"light"}  onClick={handleClick}>
       <Card.Img variant="bottom" src={img}/>
-          <ParkForm show={show} handleClose={handleClose}></ParkForm>
+          <ParkForm show={show} handleClose={handleClose} index={index} slot={slot} slots={slots} setSlots={setSlots}></ParkForm>
     </Card>
   );
 }
