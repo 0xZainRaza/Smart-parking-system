@@ -12,7 +12,7 @@ app.config['MAIL_SERVER'] = 'smtp.office365.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'smartpakingsystem@outlook.com'
-app.config['MAIL_PASSWORD'] = 'smartparkingsystem123'  
+app.config['MAIL_PASSWORD'] = '-'  
 
 mail = Mail(app)
 
