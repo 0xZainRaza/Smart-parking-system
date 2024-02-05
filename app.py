@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, flash, render_template, redirect, url_for
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_mail import Mail, Message
 import random
@@ -7,12 +7,12 @@ import string
 app = Flask(__name__)
 CORS(app)
 
-# Configuration for Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Update with your SMTP server
-app.config['MAIL_PORT'] = 465  # Update with your SMTP port
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USERNAME'] = 'zainaliraza2003@gmail.com'  # Update with your email
-app.config['MAIL_PASSWORD'] = '****'  # Update with your email password
+# Configure Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.office365.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'smartpakingsystem@outlook.com'
+app.config['MAIL_PASSWORD'] = 'smartparkingsystem123'  
 
 mail = Mail(app)
 
@@ -21,29 +21,30 @@ def generate_verification_code(length=6):
     verification_code = ''.join(random.choice(characters) for i in range(length))
     return verification_code
 
-
 @app.route('/submit-form', methods=['POST'])
 def submit_form():
-    data = request.json  
+    data = request.json
     print(data)
-    email = data['email']
-
-    if not email:
+    receiver_email = data.get('email')
+    if not receiver_email:
         return jsonify({'error': 'Email address not provided'}), 400
 
     verification_code = generate_verification_code()
 
-    msg = Message('Your Randomly Generated Password', sender='zainaliraza2003@gmail.com', recipients=[email])
-    msg.body = f'Your Verification code  is: {verification_code}'
+    # Create a Message instance
+    msg = Message('Your Code', sender='smartpakingsystem@outlook.com', recipients=[receiver_email])
 
+    # Add body to the email
+    msg.body = f"Your Verification Code: {verification_code}"
+
+    # Send the email
     try:
         mail.send(msg)
-        print('Password sent successfully!', 'success')
+        print("Email sent successfully!")
+        return jsonify({'message': 'Email sent successfully'}), 200
     except Exception as e:
-        print(f'Failed to send password. Error: {str(e)}', 'error')
-
-    return jsonify({'message': 'Form submitted successfully'})
-
+        print(f"Error sending email: {e}")
+        return jsonify({'error': 'Failed to send email'}), 500
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
