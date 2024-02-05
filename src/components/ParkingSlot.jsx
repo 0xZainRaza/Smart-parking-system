@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import ParkForm from './ParkForm';
 
-function ParkingSlot({ slot }) {
+function ParkingSlot({ index, slot, slots, setSlots }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -11,7 +11,6 @@ function ParkingSlot({ slot }) {
 
 
   const isAvailable = slot.available;
-  const statusColor = isAvailable ? 'success' : 'danger';
 
   const handleClick = () => {
     if (isAvailable && !show) {
@@ -19,11 +18,13 @@ function ParkingSlot({ slot }) {
     }
   }
 
+    const img = isAvailable ? "src/assets/img/park.png":"src/assets/img/car.png";
+
+
   return (
-    <Card id="card" bg={statusColor} text={isAvailable ? 'dark' : 'white'}>
-      <Card.Body onClick={handleClick}>
-          <ParkForm show={show} handleClose={handleClose}></ParkForm>
-      </Card.Body>
+    <Card id="card" bg={"light"}  onClick={handleClick}>
+      <Card.Img variant="bottom" src={img}/>
+          <ParkForm show={show} handleClose={handleClose} index={index} slot={slot} slots={slots} setSlots={setSlots}></ParkForm>
     </Card>
   );
 }
