@@ -33,6 +33,17 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
 
       if (response.ok) {
         console.log('Form submitted successfully');
+        setFormData({
+          firstName: '',
+          lastNamfe: '',
+          phone: '',
+          email: '',
+          licensePlate: '',
+          state: '',
+          year: '',
+          make: '',
+          model: '',
+        })
         handleClose()
         setSlots((slots) =>
         slots.map((element, i) => {
