@@ -5,8 +5,38 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
+import React from 'react';
+
+function Popup(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Modal heading
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Centered Modal</h4>
+        <p>
+          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+          consectetur ac, vestibulum at eros.
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
+  const [modalShow, setModalShow] = React.useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastNamfe: '',
@@ -45,6 +75,10 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
           model: '',
         })
         handleClose()
+        setModalShow(true);
+        setTimeout(() => {
+          setModalShow(false)
+        }, 5000)
         setSlots((slots) =>
         slots.map((element, i) => {
           if (i == index) {
@@ -72,13 +106,17 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
 
   return (
     <div>
+      <Popup
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Parking Form</Modal.Title>
+          <Modal.Title >Parking Form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
       <Form onSubmit={handleSubmit}>
-        <h1>Parking Application Form</h1>
+        <h1 style={{'fontSize': '25px'}}>Parking Application Form</h1>
         <Row className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Group as={Col} controlId="firstName">
@@ -116,7 +154,7 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
             value={formData.email}
           />
         </Form.Group>
-        <h2>Vehicle Information</h2>
+        <h2 style={{'fontSize': '25px'}}>Vehicle Information</h2>
         <Form.Group className="mb-3" controlId="licensePlate">
           <Form.Label>License Plate No.</Form.Label>
           <Form.Control

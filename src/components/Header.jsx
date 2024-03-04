@@ -2,7 +2,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 
 function Header() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" data-bs-theme="dark" expand="lg">
       <Container>
         <Navbar.Brand href="#">Smart Parking</Navbar.Brand>
         <Nav>
