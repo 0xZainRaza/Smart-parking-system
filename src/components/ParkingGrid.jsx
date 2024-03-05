@@ -10,7 +10,7 @@ function ParkingGrid() {
       <Row>
         {slots.map((slot, index) => (
           <Col key={index} index={index} slot={slot} slots={slots} setSlots={setSlots} xs={3}>
-            <ParkingSlot slot={slot} />
+            <ParkingSlot  index={index} slot={slot} slots={slots} setSlots={setSlots}/>
           </Col>
         ))}
       </Row>
