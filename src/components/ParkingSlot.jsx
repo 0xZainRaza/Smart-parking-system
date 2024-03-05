@@ -23,8 +23,8 @@ function ParkingSlot({ index, slot, slots, setSlots}) {
 
   return (
     <Card id="card" bg={"light"}  onClick={handleClick}>
-      <Card.Title style={{fontSize: '16px'}}>Slot {index + 1}</Card.Title>
-      <Card.Img variant="bottom" src={img}/>
+      <Card.Title style={{fontSize: '16px', padding: 0}}>Slot {index + 1}</Card.Title>
+      <Card.Img variant="bottom" src={img} style={{height: '12vh', width: '16vw', display: 'block', marginLeft: 'auto', marginRight: 'auto'}}/>
           <ParkForm show={show} handleClose={handleClose} index={index} slot={slot} slots={slots} setSlots={setSlots}></ParkForm>
     </Card>
   );

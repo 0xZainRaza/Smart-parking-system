@@ -1,5 +1,6 @@
 #root {
-  height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 #ParkGrid {
@@ -8,15 +9,6 @@
 
 #app {
   width: 100vw;
-}
-
-#card {
-  height: 20vh;
-}
-
-.card-img-bottom {
-  height: 100%;
-  margin: auto
 }
 
 .navbar-nav {
