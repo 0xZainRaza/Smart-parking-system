@@ -41,7 +41,8 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
     email: '',
     licensePlate: '',
     state: '',
-    year: '',
+    date: '',
+    time: '',
     make: '',
     model: '',
   });
@@ -67,7 +68,8 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
           email: '',
           licensePlate: '',
           state: '',
-          year: '',
+          date: '',
+          time: '',
           make: '',
           model: '',
         })
@@ -171,12 +173,21 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="year">
-          <Form.Label>Year</Form.Label>
+          <Form.Label>Date</Form.Label>
           <Form.Control
-            type="text"
+            type="date"
             placeholder=""
             onChange={handleInputChange}
-            value={formData.year}
+            value={formData.date}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="year">
+          <Form.Label>Time</Form.Label>
+          <Form.Control
+            type="time"
+            placeholder=""
+            onChange={handleInputChange}
+            value={formData.time}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="make">
