@@ -18,7 +18,7 @@ function ParkingSlot({ index, slot, slots, setSlots}) {
     }
   }
 
-    const img = isAvailable ? "src/assets/img/park.png":"src/assets/img/car.png";
+    const img = isAvailable ? "src/assets/img/park.png":"src/assets/img/file.png";
 
 
   return (
