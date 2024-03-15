@@ -97,6 +97,7 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
+    console.log(id, value)
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
@@ -172,7 +173,7 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
             value={formData.state}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="year">
+        <Form.Group className="mb-3" controlId="date">
           <Form.Label>Date</Form.Label>
           <Form.Control
             type="date"
