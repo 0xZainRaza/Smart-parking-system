@@ -5,12 +5,37 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
-import React from 'react';
 
-function Popup(props) {
+function Popup({show, setModalShow}) {
+  const [formData, setFormData] = useState({verificationCode: false});
+  const [confirmShow, setConfirmShow] = useState(false);
+
+  const handleVerification = () => {
+    setModalShow(false);
+    setConfirmShow(true);
+    setTimeout(() => {
+      setConfirmShow(false)
+    }, 5000);
+  }
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+  if (confirmShow) {
+    return(
+      <Modal>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Confirmed!
+        </Modal.Title>
+        <img src="src/assets/img/park.png" className='img-fluid'></img>
+      </Modal>
+    )
+  }
   return (
     <Modal
-      {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -24,16 +49,27 @@ function Popup(props) {
         <p>
           Your Slot has been booked. The verfication code has been send via email.
         </p>
+        <Form onClick={handleVerification}>
+        <Form.Label>Verification</Form.Label>
+          <Form.Group as={Col} controlId="veriCode">
+            <Form.Control
+              type="text"
+              placeholder="Verification Code"
+              onChange={handleInputChange}
+              value={formData.verificationCode}
+            />
+          </Form.Group>
+        </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
+          <Button variant="primary" onClick={handleVerification}>
+            Send
+          </Button>
     </Modal>
   );
 }
 
 function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastNamfe: '',
@@ -73,11 +109,8 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
           make: '',
           model: '',
         })
-        handleClose()
+        handleClose();
         setModalShow(true);
-        setTimeout(() => {
-          setModalShow(false)
-        }, 5000)
         setSlots((slots) =>
         slots.map((element, i) => {
           if (i == index) {
@@ -97,7 +130,6 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    console.log(id, value)
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
@@ -107,7 +139,7 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
   return (
     <div>
       <Popup
-        show={modalShow}
+        show={modalShow} changeState={setModalShow}
         onHide={() => setModalShow(false)}
       />
       <Modal show={show} onHide={handleClose}>
