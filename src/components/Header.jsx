@@ -6,7 +6,7 @@ function Header() {
     <div style={{backgroundImage: `url(${backImg}`, backgroundRepeat: 'no-repeat',backgroundSize: 'cover', height: '110px'}}>
       <Navbar data-bs-theme="dark" expand="lg">
         <Container>
-          <Navbar.Brand href="/"><img style={{height: '100px'}}src='src/assets/img/header_name_pic.png' />Blockchain Based Smart Parking</Navbar.Brand>
+          <Navbar.Brand href="/">Blockchain Based Smart Parking</Navbar.Brand>
           <Nav>
             <Nav.Link href="#">Home</Nav.Link>
             <Nav.Link href="#">About</Nav.Link>
