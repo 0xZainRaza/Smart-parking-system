@@ -224,7 +224,7 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
             value={formData.date}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="year">
+        <Form.Group className="mb-3" controlId="time">
           <Form.Label>Time</Form.Label>
           <Form.Control
             type="time"
