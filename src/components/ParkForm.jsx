@@ -6,73 +6,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 
-function Popup({show, setModalShow}) {
-  const [formData, setFormData] = useState({verificationCode: false});
-  const [confirmShow, setConfirmShow] = useState(false);
-
-  const handleVerification = () => {
-    setModalShow(false);
-    setConfirmShow(true);
-    setTimeout(() => {
-      setConfirmShow(false)
-    }, 5000);
-  }
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
-  };
-  if (confirmShow) {
-    return(
-      <Modal>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Confirmed!
-        </Modal.Title>
-        <img src="src/assets/img/park.png" className='img-fluid'></img>
-      </Modal>
-    )
-  }
-  return (
-    <Modal
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Booked!
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>
-          Your Slot has been booked. The verfication code has been send via email.
-        </p>
-        <Form onClick={handleVerification}>
-        <Form.Label>Verification</Form.Label>
-          <Form.Group as={Col} controlId="veriCode">
-            <Form.Control
-              type="text"
-              placeholder="Verification Code"
-              onChange={handleInputChange}
-              value={formData.verificationCode}
-            />
-          </Form.Group>
-        </Form>
-      </Modal.Body>
-          <Button variant="primary" onClick={handleVerification}>
-            Send
-          </Button>
-    </Modal>
-  );
-}
-
 function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
   const [modalShow, setModalShow] = useState(false);
+  const [confirmShow, setConfirmShow] = useState(false);
+  const [modalFormData, setModalFormData] = useState({verificationCode: ''});
   const [formData, setFormData] = useState({
     firstName: '',
-    lastNamfe: '',
+    lastName: '',
     phone: '',
     email: '',
     licensePlate: '',
@@ -82,6 +22,20 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
     make: '',
     model: '',
   });
+
+  const handleModalVerification = () => {
+    setModalShow(false);
+    setConfirmShow(true);
+    setTimeout(() => {
+      setConfirmShow(false)
+    }, 5000);
+  }
+  const handleModalInputChange = (e) => {
+    const { id, value } = e.target;
+    setModalFormData(() => ({
+      verificationCode: value,
+    }));
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -136,12 +90,68 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
     }));
   };
 
+  if (confirmShow) {
+    return (
+      <Modal
+        show={confirmShow}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Confirmation
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.07.02l-3.99 4.99L5.04 7.34a.75.75 0 1 0-1.08 1.32l2.7 2.5a.75.75 0 0 0 1.05.02l4.5-5.5a.75.75 0 0 0-.02-1.05z"/>
+            </svg>
+            <p style={{ marginLeft: '10px' }}>Your booking has been confirmed!</p>
+          </div>
+        </Modal.Body>
+      </Modal>
+    )
+  }
+  if (modalShow) {
+    return (
+      <Modal
+        show={modalShow}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Booked!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Your Slot has been booked. The verfication code has been send via email.
+          </p>
+          <Form>
+          <Form.Label>Verification</Form.Label>
+            <Form.Group as={Col} controlId="veriCode">
+              <Form.Control
+                type="text"
+                placeholder="Verification Code"
+                onChange={handleModalInputChange}
+                value={modalFormData.verificationCode}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+            <Button variant="primary" onClick={handleModalVerification}>
+              Send
+            </Button>
+      </Modal>
+    );
+  }
+
   return (
     <div>
-      <Popup
-        show={modalShow} changeState={setModalShow}
-        onHide={() => setModalShow(false)}
-      />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title >Parking Form</Modal.Title>
