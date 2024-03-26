@@ -90,6 +90,8 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
     }));
   };
 
+  
+
   if (confirmShow) {
     return (
       <Modal
@@ -152,7 +154,7 @@ function ParkForm({show, handleClose, index, slot, slots, setSlots}) {
 
   return (
     <div>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}> 
         <Modal.Header>
           <Modal.Title >Parking Form</Modal.Title>
         </Modal.Header>

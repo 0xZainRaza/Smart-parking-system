@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ParkingSlot from './ParkingSlot';
 
 function ParkingGrid() {
-  const [slots, setSlots] = useState(Array(16).fill({available: true}));
+  const [slots, setSlots] = useState(Array(16).fill({available: false}));
 
   return (
     <Container id="ParkGrid">
