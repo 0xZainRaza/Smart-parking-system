@@ -15,3 +15,5 @@ Currently, two official plugins are available:
 ```npm
    npm run dev
 ```
+
+This repository will be updated soon.
