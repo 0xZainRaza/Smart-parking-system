@@ -14,8 +14,7 @@ https://github.com/0xZainRaza/Smart-parking-system/assets/154006182/758a0b28-843
 
 
 ## Purpose
-Smart parking systems aim to maximize the utilization of available parking spaces by efficiently guiding drivers to vacant spots. This helps reduce congestion and frustration associated with searching for parking.
-
+Smart parking systems aim to maximize the utilization of available parking spaces by efficiently guiding drivers to vacant spots. This helps reduce congestion and frustration associated with searching for parking. Furthermore, integrating a private multichain blockchain to support immutability and produces tamper-proof records.
 
 
 
