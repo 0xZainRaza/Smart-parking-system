@@ -31,7 +31,6 @@ https://github.com/0xZainRaza/Smart-parking-system/assets/154006182/758a0b28-843
 
 - **Vite**: Vite is used as the build tool for the project, providing fast and efficient development and production builds.
 
-- **ESLint**: ESLint is configured to enforce code quality and maintain consistency throughout the project.
 
 ## Getting Started
 
