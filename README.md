@@ -23,22 +23,45 @@ https://github.com/0xZainRaza/Smart-parking-system/assets/154006182/758a0b28-843
 
 
 
-# React + Vite
+## Technologies Used
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **React**: The frontend of the application is built using React, a popular JavaScript library for building user interfaces.
 
-Currently, two official plugins are available:
+- **Flask**: Flask is used as the backend framework for handling server-side logic and API requests.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Vite**: Vite is used as the build tool for the project, providing fast and efficient development and production builds.
 
-# Usage
+- **ESLint**: ESLint is configured to enforce code quality and maintain consistency throughout the project.
 
-```python
-   python app.py
-```
-```npm
+## Getting Started
+
+To run the project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/0xZainRaza/Smart-parking-system.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd Smart-parking-system
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
    npm run dev
-```
+   ```
+   ```bash
+   python app.py
+   ```
 
-This repository will be updated soon.
+
