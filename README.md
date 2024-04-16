@@ -31,6 +31,8 @@ Smart parking systems aim to maximize the utilization of available parking space
 - **Flask**: Flask is used as the backend framework for handling server-side logic and API requests.
 
 - **Vite**: Vite is used as the build tool for the project, providing fast and efficient development and production builds.
+  
+- **ESLint**: ESLint is configured to enforce code quality and maintain consistency throughout the project.
 
 
 ## Getting Started
